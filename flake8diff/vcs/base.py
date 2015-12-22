@@ -55,3 +55,12 @@ class VCSBase(object):
         Returns True if the configuration is correct or raises the exception
         """
         return True
+
+    def filter(self):
+        """
+        Returns a filter result command based on the exclude option
+        """
+        exclude_option = self.options['exclude']
+        if not exclude_option:
+            return ""
+        return "| grep -v '{}'".format(exclude_option)

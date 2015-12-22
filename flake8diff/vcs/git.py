@@ -65,7 +65,7 @@ class GitVCS(VCSBase):
             "diff",
             "--name-only",
             "--diff-filter=ACMRTUXB",
-        ] + self.commits)
+        ] + self.commits + [self.filter()])
 
         return filter(self.filter_file,
                       iter(_execute(' '.join(command))

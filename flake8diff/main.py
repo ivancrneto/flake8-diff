@@ -77,6 +77,13 @@ parser.add_argument(
                                  SUPPORTED_VCS.values()))),
 )
 parser.add_argument(
+    '--exclude',
+    default=None,
+    dest='exclude',
+    type=six.text_type,
+    help='exclude files or directories',
+)
+parser.add_argument(
     '--standard-flake8-output',
     action='store_true',
     default=False,
@@ -145,6 +152,7 @@ def main():
     options = {
         'commits': args.commit,
         'vcs': args.vcs,
+        'exclude': args.exclude,
         'flake8_options': args.flake8_options,
         'standard_flake8_output': args.standard_flake8_output,
         'color_theme': args.color,

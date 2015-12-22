@@ -60,6 +60,7 @@ class HgVCS(VCSBase):
         """
         commits = ['-r {}'.format(c) for c in self.commits]
         command = [self.vcs, 'diff', '--stat'] + commits
+        command += [self.filter()]
         result = _execute(' '.join(command))
         lines = result.strip().split('\n')[:-1]
         files = [
